@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     //SmoothieTab
     MyTab(iconPath: "lib/icons/smoothie.png"),
   ];
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             //Texto "I want to eat"
             Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 36.0, vertical: 18.0),
+                  const EdgeInsets.symmetric(horizontal: 36.0, vertical: 18.0),
               child: Row(
                 children: [
                   Text(
@@ -61,12 +62,12 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     "Eat",
                     style: TextStyle(
-                        // Tamaño de letra
-                        fontSize: 32,
-                        // Negritas
-                        fontWeight: FontWeight.bold,
-                        // Subrayado
-                        decoration: TextDecoration.underline),
+                      // Tamaño de letra
+                      fontSize: 32,
+                      // Negritas
+                      fontWeight: FontWeight.bold,
+                      // Subrayado
+                      decoration: TextDecoration.underline),
                   )
                 ],
               ),
@@ -74,14 +75,14 @@ class _HomePageState extends State<HomePage> {
             //Tab bar
             TabBar(tabs: myTabs),
             //Tab bar view
-            Expanded(child: TabBarView(children: [
+            Expanded(
+                child: TabBarView(children: [
               BurgerTab(),
               DonutTab(),
               PancakesTab(),
               PizzaTab(),
               SmoothieTab()
-            ])
-            )
+            ]))
             //Carrito
           ],
         ),
@@ -89,4 +90,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
