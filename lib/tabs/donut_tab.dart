@@ -14,22 +14,22 @@ class DonutTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      //Cúantos elementos tiene
-      itemCount: donutOnSale.length,
-      padding: const EdgeInsets.all(12),
-      //Encargado de organizar la cuadrícula
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //Determinar número de columnas
-          crossAxisCount: 2),
-      itemBuilder: (context, index) {
-        //Elemento individual de la cuadrícula
-        return DonutTile(
-          donutFlavor: donutOnSale[index][0],
-          donutPrice: donutOnSale[index][1],
-          donutColor: donutOnSale[index][2],
-          imageName: donutOnSale[index][3]
-        );
-      }
-    );
+        //Cúantos elementos tiene
+        itemCount: donutOnSale.length,
+        padding: const EdgeInsets.all(12),
+        //Encargado de organizar la cuadrícula
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //Determinar número de columnas
+            crossAxisCount: 2,
+            //Relación de aspecto
+            childAspectRatio: 1 / 1.5),
+        itemBuilder: (context, index) {
+          //Elemento individual de la cuadrícula
+          return DonutTile(
+              donutFlavor: donutOnSale[index][0],
+              donutPrice: donutOnSale[index][1],
+              donutColor: donutOnSale[index][2],
+              imageName: donutOnSale[index][3]);
+        });
   }
 }

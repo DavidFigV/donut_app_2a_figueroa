@@ -16,16 +16,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //Lista de Tabs
   List<Widget> myTabs = [
-    //BurgerTab
-    MyTab(iconPath: "lib/icons/burger.png"),
     //DonutTab
     MyTab(iconPath: "lib/icons/donut.png"),
-    //PancakesTab
-    MyTab(iconPath: "lib/icons/pancakes.png"),
+    //BurgerTab
+    MyTab(iconPath: "lib/icons/burger.png"),
     //PizzaTab
     MyTab(iconPath: "lib/icons/pizza.png"),
     //SmoothieTab
     MyTab(iconPath: "lib/icons/smoothie.png"),
+    //PancakesTab
+    MyTab(iconPath: "lib/icons/pancakes.png"),
   ];
 
   @override
@@ -62,12 +62,12 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     "Eat",
                     style: TextStyle(
-                      // Tamaño de letra
-                      fontSize: 32,
-                      // Negritas
-                      fontWeight: FontWeight.bold,
-                      // Subrayado
-                      decoration: TextDecoration.underline),
+                        // Tamaño de letra
+                        fontSize: 32,
+                        // Negritas
+                        fontWeight: FontWeight.bold,
+                        // Subrayado
+                        decoration: TextDecoration.underline),
                   )
                 ],
               ),
@@ -77,11 +77,11 @@ class _HomePageState extends State<HomePage> {
             //Tab bar view
             Expanded(
                 child: TabBarView(children: [
-              BurgerTab(),
               DonutTab(),
-              PancakesTab(),
+              BurgerTab(),
               PizzaTab(),
-              SmoothieTab()
+              SmoothieTab(),
+              PancakesTab()
             ]))
             //Carrito
           ],
