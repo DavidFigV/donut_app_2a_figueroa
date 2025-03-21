@@ -2,66 +2,43 @@ import 'package:donut_app_2a_figueroa/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
 
 class BurgerTab extends StatelessWidget {
+  final Function(int, double) onAddToCart;
   final List burguerOnSale = [
     // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
     [
-      "Ice Cream",
-      "Krispy Cream",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
+      "Juice Burger",
+      "Burger King",
+      "65",
+      Colors.orange,
+      "lib/images/Juiceburger.png"
     ],
     [
-      "Strawberry",
-      "Dunkin Donuts",
+      "Double Meat",
+      "Burger King",
       "45",
       Colors.red,
-      "lib/images/strawberry_donut.png"
+      "lib/images/Doblecarne.png"
     ],
     [
-      "Grape Ape",
-      "Krispy Cream",
-      "84",
-      Colors.purple,
-      "lib/images/grape_donut.png"
+      "Jhony Burger",
+      "Johnny rockets",
+      "66",
+      Colors.yellow,
+      "lib/images/jhonybur.png"
     ],
+    ["Mr. Bacon", "McDonalds", "82", Colors.brown, "lib/images/mr.bacon.png"],
+    ["Wakey wakey!!", "McDonalds", "75", Colors.yellow, "lib/images/wakey.png"],
+    ["ALL IN", "Burger King", "80", Colors.brown, "lib/images/todoonada.png"],
     [
-      "Choco",
-      "Donkey Donut",
-      "95",
-      Colors.brown,
-      "lib/images/chocolate_donut.png"
+      "Green Burger",
+      "Johny rockets",
+      "65",
+      Colors.green,
+      "lib/images/green.png"
     ],
-    [
-      "Sugar",
-      "Dunkin Donuts",
-      "32",
-      Colors.orangeAccent,
-      "lib/images/sugar_donut.png"
-    ],
-    [
-      "Extra Chocolate",
-      "Krispy Cream",
-      "38",
-      Colors.brown,
-      "lib/images/extrachoco_donut.png"
-    ],
-    [
-      "Ice Cream",
-      "Krispy Cream",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
+    ["Mini Dini", "McDonalds", "78", Colors.blue, "lib/images/mini.png"],
   ];
-  BurgerTab({super.key});
+  BurgerTab({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +51,7 @@ class BurgerTab extends StatelessWidget {
             //Determinar número de columnas
             crossAxisCount: 2,
             //Relación de aspecto
-            childAspectRatio: 1 / 1.5),
+            childAspectRatio: 1 / 1.35),
         itemBuilder: (context, index) {
           //Elemento individual de la cuadrícula
           return DonutTile(
@@ -82,7 +59,8 @@ class BurgerTab extends StatelessWidget {
               donutStore: burguerOnSale[index][1],
               donutPrice: burguerOnSale[index][2],
               donutColor: burguerOnSale[index][3],
-              imageName: burguerOnSale[index][4]);
+              imageName: burguerOnSale[index][4],
+              onAddToCart: onAddToCart);
         });
   }
 }

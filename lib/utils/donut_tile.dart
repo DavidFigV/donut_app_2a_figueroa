@@ -7,14 +7,17 @@ class DonutTile extends StatelessWidget {
       donutColor; //dynamic porque será de tipo Color y también usará []
   final String imageName;
   final String donutStore;
+  final Function(int, double) onAddToCart;
 
-  const DonutTile(
-      {super.key,
-      required this.donutFlavor,
-      required this.donutPrice,
-      required this.donutColor,
-      required this.imageName,
-      required this.donutStore});
+DonutTile({
+  super.key,
+  required this.donutFlavor,
+  required this.donutPrice,
+  required this.donutColor,
+  required this.imageName,
+  required this.donutStore,
+  required this.onAddToCart,
+});
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +74,19 @@ class DonutTile extends StatelessWidget {
               const SizedBox(height: 4),
               //Love icon + add button
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Icon(Icons.favorite_border), Icon(Icons.add)],
+                  children: [
+                    Icon(Icons.favorite_border),
+                    ElevatedButton(
+                        onPressed: () {
+                          onAddToCart(1, double.parse(donutPrice));
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: donutColor[50]),
+                        child: Icon(Icons.add))
+                  ],
                 ),
               )
             ],

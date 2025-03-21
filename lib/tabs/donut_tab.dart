@@ -2,6 +2,7 @@ import 'package:donut_app_2a_figueroa/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
 
 class DonutTab extends StatelessWidget {
+  final Function(int, double) onAddToCart;
   final List donutOnSale = [
     // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
     [
@@ -46,22 +47,10 @@ class DonutTab extends StatelessWidget {
       Colors.brown,
       "lib/images/extrachoco_donut.png"
     ],
-    [
-      "Ice Cream",
-      "Krispy Cream",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
+    ["Carlos V", "Krispy Cream", "99", Colors.brown, "lib/images/carlos.png"],
+    ["Crunchy", "Krispy Cream", "81", Colors.orange, "lib/images/crunch.png"],
   ];
-  DonutTab({super.key});
+  DonutTab({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +63,7 @@ class DonutTab extends StatelessWidget {
             //Determinar número de columnas
             crossAxisCount: 2,
             //Relación de aspecto
-            childAspectRatio: 1 / 1.5),
+            childAspectRatio: 1 / 1.35),
         itemBuilder: (context, index) {
           //Elemento individual de la cuadrícula
           return DonutTile(
@@ -82,7 +71,8 @@ class DonutTab extends StatelessWidget {
               donutStore: donutOnSale[index][1],
               donutPrice: donutOnSale[index][2],
               donutColor: donutOnSale[index][3],
-              imageName: donutOnSale[index][4]);
+              imageName: donutOnSale[index][4],
+              onAddToCart: onAddToCart);
         });
   }
 }

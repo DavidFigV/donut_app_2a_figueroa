@@ -2,66 +2,19 @@ import 'package:donut_app_2a_figueroa/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
 
 class PancakesTab extends StatelessWidget {
+  final Function(int, double) onAddToCart;
   final List pancakesOnSale = [
     // [ donutFlavor, donutStore, donutPrice, donutColor, imageName ]
-    [
-      "Ice Cream",
-      "Krispy Cream",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    [
-      "Grape Ape",
-      "Krispy Cream",
-      "84",
-      Colors.purple,
-      "lib/images/grape_donut.png"
-    ],
-    [
-      "Choco",
-      "Donkey Donut",
-      "95",
-      Colors.brown,
-      "lib/images/chocolate_donut.png"
-    ],
-    [
-      "Sugar",
-      "Dunkin Donuts",
-      "32",
-      Colors.orangeAccent,
-      "lib/images/sugar_donut.png"
-    ],
-    [
-      "Extra Chocolate",
-      "Krispy Cream",
-      "38",
-      Colors.brown,
-      "lib/images/extrachoco_donut.png"
-    ],
-    [
-      "Ice Cream",
-      "Krispy Cream",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
+    ["Natural", "I-HOP", "36", Colors.yellow, "lib/images/natural.png"],
+    ["Strawberry", "I-HOP", "45", Colors.red, "lib/images/fresahot.png"],
+    ["Chocolate", "I-HOP", "84", Colors.brown, "lib/images/chocolate.png"],
+    ["Hot-Banana", "I-HOP", "95", Colors.yellow, "lib/images/hotplatano.png"],
+    ["Hot-Tower", "I HOP", "60", Colors.brown, "lib/images/hotower.png"],
+    ["Hot-Cupcake", "I-HOP", "78", Colors.purple, "lib/images/colores.png"],
+    ["Hot-Pay", "I-HOP", "99", Colors.purple, "lib/images/pay.png"],
+    ["Hot-Hershey", "I-HOP", "81", Colors.yellow, "lib/images/hershey.png"],
   ];
-  PancakesTab({super.key});
+  PancakesTab({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +27,7 @@ class PancakesTab extends StatelessWidget {
             //Determinar número de columnas
             crossAxisCount: 2,
             //Relación de aspecto
-            childAspectRatio: 1 / 1.5),
+            childAspectRatio: 1 / 1.35),
         itemBuilder: (context, index) {
           //Elemento individual de la cuadrícula
           return DonutTile(
@@ -82,7 +35,8 @@ class PancakesTab extends StatelessWidget {
               donutStore: pancakesOnSale[index][1],
               donutPrice: pancakesOnSale[index][2],
               donutColor: pancakesOnSale[index][3],
-              imageName: pancakesOnSale[index][4]);
+              imageName: pancakesOnSale[index][4],
+              onAddToCart: onAddToCart);
         });
   }
 }

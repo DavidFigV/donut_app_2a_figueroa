@@ -28,6 +28,16 @@ class _HomePageState extends State<HomePage> {
     MyTab(iconPath: "lib/icons/pancakes.png"),
   ];
 
+  int totalItems = 0;
+  double totalPrice = 0.0;
+
+  void updateCart(int items, double price) {
+    setState(() {
+      totalItems += items;
+      totalPrice += price;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -72,16 +82,17 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+
             //Tab bar
             TabBar(tabs: myTabs),
             //Tab bar view
             Expanded(
                 child: TabBarView(children: [
-              DonutTab(),
-              BurgerTab(),
-              PizzaTab(),
-              SmoothieTab(),
-              PancakesTab()
+              DonutTab(onAddToCart: updateCart),
+              BurgerTab(onAddToCart: updateCart),
+              PizzaTab(onAddToCart: updateCart),
+              SmoothieTab(onAddToCart: updateCart),
+              PancakesTab(onAddToCart: updateCart)
             ])),
             //Carrito
             Container(
@@ -96,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '2 Items | \$45',
+                          '$totalItems Items | \$$totalPrice',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
@@ -110,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                   ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.pink,
+                          backgroundColor: Colors.pink,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 24, vertical: 12)),
                       child: const Text(
